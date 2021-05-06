@@ -313,7 +313,7 @@ class SqlValidator(Validator):
                 first_error = next(
                     error
                     for error in errors
-                    if error.get("message")
+                    if isinstance(error, dict) and error.get("message")
                     != "Note: This query contains derived tables with conditional SQL for Development Mode. "
                     "Query results in Production Mode might be different."
                 )
